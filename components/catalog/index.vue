@@ -1,9 +1,11 @@
 <template>
-  <div>aa</div>
+  <div>catalog</div>
 </template>
 
 <script>
 export default {
-  name: 'Vehicle',
+  name: 'index',
 }
 </script>
+
+<style scoped></style>
