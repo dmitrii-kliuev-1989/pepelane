@@ -1,13 +1,15 @@
 <template>
   <div class="header">
-    <div class="logo">
-      <img src="~/assets/images/svg/Logo.svg" alt="logo" />
-      <img
-        class="pepelane__img"
-        src="~/assets/images/svg/Pepelane.svg"
-        alt="Pepelane"
-      />
-    </div>
+    <NuxtLink to="/">
+      <div class="logo">
+        <img src="~/assets/images/svg/Logo.svg" alt="logo" />
+        <img
+          class="pepelane__img"
+          src="~/assets/images/svg/Pepelane.svg"
+          alt="Pepelane"
+        />
+      </div>
+    </NuxtLink>
     <div class="sharing">World's first affordable airsharing</div>
     <div class="nightMod">
       <img

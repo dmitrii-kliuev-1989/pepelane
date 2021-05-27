@@ -1,9 +1,7 @@
 <template>
-  <div class="mainWrapper">
-    <div class="main">
-      <Header />
-      <Nuxt />
-    </div>
+  <div class="main">
+    <Header />
+    <Nuxt />
   </div>
 </template>
 
@@ -27,7 +25,7 @@ html {
   margin: 0;
 }
 
-.mainWrapper {
+body {
   background-color: var(--c-alabaster);
 }
 

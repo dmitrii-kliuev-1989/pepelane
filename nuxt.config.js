@@ -9,7 +9,7 @@ export default {
   head: {
     title: 'pepelane',
     htmlAttrs: {
-      lang: 'ru',
+      lang: 'en',
     },
     meta: [
       { charset: 'utf-8' },

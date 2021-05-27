@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="items">
-      <NuxtLink class="link" to="/vehicle">
+      <NuxtLink class="link" to="/vehicle/specifications">
         <div class="item">
           <img
             class="item__image"
