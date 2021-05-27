@@ -23,7 +23,7 @@
         </NuxtLink>
       </div>
 
-      <div class="content">
+      <div class="childContent">
         <NuxtChild />
       </div>
 
@@ -52,13 +52,13 @@ export default {
 
 .info {
   margin-left: 64px;
-}
 
-.info__title {
-  font-family: var(--f-bold);
-  margin-top: 54px;
-  font-size: 40px;
-  color: var(--c-midnight);
+  &__title {
+    font-family: var(--f-bold);
+    margin-top: 54px;
+    font-size: 40px;
+    color: var(--c-midnight);
+  }
 }
 
 .nav {
@@ -68,23 +68,24 @@ export default {
   width: 300px;
 }
 
+.childContent {
+  height: 400px;
+}
+
 .link {
   font-family: var(--f-bold);
   color: var(--c-slate-gray);
   font-size: 16px;
   cursor: pointer;
-}
+  text-decoration: none;
 
-.link:hover {
-  text-decoration: underline;
-}
+  &_active {
+    color: var(--c-dodger-blue);
+  }
 
-.link_active {
-  color: var(--c-dodger-blue);
-}
-
-.activeLink {
-  color: var(--c-dodger-blue);
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .rentNow {
@@ -97,32 +98,28 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 16px 32px;
-}
 
-.rentNow__for {
-  color: var(--c-midnight);
-  font-family: var(--f-bold);
-  font-size: 20px;
-}
+  &__for {
+    color: var(--c-midnight);
+    font-family: var(--f-bold);
+    font-size: 20px;
+  }
 
-.rentNow__price {
-  color: var(--c-brilliant-rose);
-  font-family: var(--f-bold);
-  font-size: 20px;
-}
+  &__price {
+    color: var(--c-brilliant-rose);
+    font-family: var(--f-bold);
+    font-size: 20px;
+  }
 
-.rentNow__button {
-  font-family: var(--f-bold);
-  background-color: var(--c-dodger-blue);
-  color: var(--c-alabaster);
-  border: none;
-  border-radius: 12px;
-  height: 48px;
-  width: 136px;
-  cursor: pointer;
-}
-
-.content {
-  height: 400px;
+  &__button {
+    font-family: var(--f-bold);
+    background-color: var(--c-dodger-blue);
+    color: var(--c-alabaster);
+    border: none;
+    border-radius: 12px;
+    height: 48px;
+    width: 136px;
+    cursor: pointer;
+  }
 }
 </style>

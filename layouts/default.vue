@@ -30,8 +30,14 @@ body {
 }
 
 .main {
-  width: 1440px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 48px 64px;
+}
+
+@media (max-width: 700px) {
+  .main {
+    padding: 0;
+  }
 }
 </style>

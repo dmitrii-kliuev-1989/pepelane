@@ -2,7 +2,7 @@
   <div class="header">
     <NuxtLink to="/">
       <div class="logo">
-        <img src="~/assets/images/svg/Logo.svg" alt="logo" />
+        <img class="logo__img" src="~/assets/images/svg/Logo.svg" alt="logo" />
         <img
           class="pepelane__img"
           src="~/assets/images/svg/Pepelane.svg"
@@ -26,7 +26,7 @@
     />
     <img class="bellImage" src="~/assets/images/svg/bell.svg" alt="bell" />
     <div class="person">
-      <div class="person__text">Bessie Cooper</div>
+      <div class="person__name">Bessie Cooper</div>
       <img
         class="person__image"
         src="~/assets/images/png/person.png"
@@ -65,18 +65,15 @@ export default {
 }
 
 .nightMod {
-  margin: auto 0 auto 273px;
+  margin: auto 0 auto auto;
   display: flex;
-}
 
-.nightMod__image {
-}
-
-.nightMod__text {
-  margin: 0 0 0 16px;
-  font-family: var(--f-reg);
-  color: var(--c-slate-gray);
-  white-space: nowrap;
+  &__text {
+    margin: 0 0 0 16px;
+    font-family: var(--f-reg);
+    color: var(--c-slate-gray);
+    white-space: nowrap;
+  }
 }
 
 .messagesImage {
@@ -89,17 +86,80 @@ export default {
 
 .person {
   display: flex;
+
+  &__name {
+    margin-left: 47px;
+    align-self: center;
+    white-space: nowrap;
+    font-family: var(--f-bold);
+  }
+
+  &__image {
+    margin-left: 16px;
+    border-radius: 50%;
+  }
 }
 
-.person__text {
-  margin-left: 47px;
-  align-self: center;
-  white-space: nowrap;
-  font-family: var(--f-bold);
+@media (max-width: 1240px) {
+  .sharing {
+    display: none;
+  }
 }
 
-.person__image {
-  margin-left: 16px;
-  border-radius: 50%;
+@media (max-width: 920px) {
+  .nightMod__text {
+    display: none;
+  }
+
+  .messagesImage,
+  .bellImage {
+    margin-left: 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    padding: 12px 16px;
+  }
+
+  .logo {
+    margin: 0;
+
+    &__img {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  .pepelane__img {
+    margin: 9px 0 0 12px;
+    padding: 0;
+    height: 14px;
+    width: 67px;
+  }
+
+  .messagesImage,
+  .bellImage {
+    width: 20px;
+    height: 20px;
+    margin-top: 6px;
+  }
+
+  .nightMod__image {
+    height: 18px;
+    margin: 0;
+  }
+
+  .person {
+    &__name {
+      display: none;
+    }
+
+    &__image {
+      margin: auto 0 0 25px;
+      width: 32px;
+      height: 32px;
+    }
+  }
 }
 </style>

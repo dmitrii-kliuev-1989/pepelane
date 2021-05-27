@@ -52,20 +52,20 @@ export default {
 <style scoped>
 .spec {
   padding-top: 32px;
-}
 
-.spec__text {
-  font-family: var(--f-reg);
-  font-size: 14px;
-  line-height: 20px;
-  color: var(--c-slate-gray);
-}
+  &__text {
+    font-family: var(--f-reg);
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--c-slate-gray);
+  }
 
-.spec__featuresTitle {
-  margin-top: 27px;
-  font-family: var(--f-bold);
-  color: var(--c-midnight);
-  font-size: 24px;
+  &__featuresTitle {
+    margin-top: 27px;
+    font-family: var(--f-bold);
+    color: var(--c-midnight);
+    font-size: 24px;
+  }
 }
 
 .features {
@@ -77,36 +77,36 @@ export default {
 .feature {
   display: flex;
   margin-bottom: 9px;
-}
 
-.feature__imageWrapper {
-  background-color: var(--c-athens-gray);
-  border-radius: 16px;
-  min-width: 80px;
-  height: 96px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  &__imageWrapper {
+    background-color: var(--c-athens-gray);
+    border-radius: 16px;
+    min-width: 80px;
+    height: 96px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.feature__info {
-  margin-left: 24px;
-  display: flex;
-  flex-direction: column;
-}
+  &__info {
+    margin-left: 24px;
+    display: flex;
+    flex-direction: column;
+  }
 
-.feature__title {
-  margin-top: 14px;
-  font-family: var(--f-bold);
-  color: var(--c-midnight);
-  font-size: 16px;
-}
+  &__title {
+    margin-top: 14px;
+    font-family: var(--f-bold);
+    color: var(--c-midnight);
+    font-size: 16px;
+  }
 
-.feature__text {
-  margin-top: 11px;
-  font-family: var(--f-reg);
-  color: var(--c-slate-gray);
-  line-height: 20px;
-  font-size: 14px;
+  &__text {
+    margin-top: 11px;
+    font-family: var(--f-reg);
+    color: var(--c-slate-gray);
+    line-height: 20px;
+    font-size: 14px;
+  }
 }
 </style>
