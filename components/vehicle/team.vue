@@ -11,8 +11,10 @@
           src="~/assets/images/png/pilot-assistant.png"
           alt="pilot-assistant"
         />
-        <span class="specialist__name">Marvin McKinney</span>
-        <span class="specialist__role">Pilot assistant</span>
+        <div class="specialist__info">
+          <span class="specialist__name">Marvin McKinney</span>
+          <span class="specialist__role">Pilot assistant</span>
+        </div>
       </div>
       <div class="specialist">
         <img
@@ -20,8 +22,10 @@
           src="~/assets/images/png/mechanic.png"
           alt="mechanic"
         />
-        <span class="specialist__name">Savannah Nguyen</span>
-        <span class="specialist__role">Mechanic</span>
+        <div class="specialist__info">
+          <span class="specialist__name">Savannah Nguyen</span>
+          <span class="specialist__role">Mechanic</span>
+        </div>
       </div>
       <div class="specialist">
         <img
@@ -29,8 +33,10 @@
           src="~/assets/images/png/stewardess.png"
           alt="stewardess"
         />
-        <span class="specialist__name">Courtney Henry</span>
-        <span class="specialist__role">Stewardess</span>
+        <div class="specialist__info">
+          <span class="specialist__name">Courtney Henry</span>
+          <span class="specialist__role">Stewardess</span>
+        </div>
       </div>
     </div>
     <span class="specialists__description">
@@ -57,6 +63,7 @@ export default {
     font-family: var(--f-reg);
     color: var(--c-slate-gray);
     font-size: 14px;
+    line-height: 20px;
   }
 
   &__title {
@@ -71,7 +78,7 @@ export default {
   display: flex;
 
   &__description {
-    margin-top: 35px;
+    margin-top: 19px;
     font-family: var(--f-reg);
     color: var(--c-slate-gray);
     font-size: 14px;
@@ -83,6 +90,11 @@ export default {
   display: flex;
   flex-direction: column;
   margin-right: 25px;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
 
   &:last-child {
     margin-right: 0;
@@ -100,6 +112,54 @@ export default {
     color: var(--c-slate-gray);
     font-family: var(--f-reg);
     font-size: 12px;
+  }
+}
+
+@media (max-width: 800px) {
+  .team {
+    padding-bottom: 139px;
+  }
+
+  .specialists {
+    flex-direction: column;
+    margin-top: 24px;
+    margin-left: 1px;
+  }
+
+  .specialist {
+    margin-bottom: 12px;
+    flex-direction: row;
+
+    &__image {
+      width: 132px;
+      height: 80px;
+    }
+
+    &__info {
+      margin-left: 16px;
+    }
+
+    &__name {
+      margin-top: 20px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .team {
+    &__description {
+      margin-top: 17px;
+      font-family: var(--f-reg);
+      color: var(--c-slate-gray);
+      font-size: 14px;
+    }
+
+    &__title {
+      font-size: 20px;
+      margin-top: 22px;
+    }
   }
 }
 </style>

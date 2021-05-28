@@ -1,6 +1,10 @@
 <template>
   <div class="vehicle">
-    <img src="~/assets/images/png/helicopter.png" alt="helicopter" />
+    <img
+      class="vehicle__image"
+      src="~/assets/images/png/helicopter.png"
+      alt="helicopter"
+    />
     <div class="info">
       <h1 class="info__title">XR-74 «Cooper»</h1>
       <div class="nav">
@@ -27,13 +31,17 @@
         <NuxtChild />
       </div>
 
-      <div class="rentNow">
-        <div>
-          <span class="rentNow__for">Rent for</span>
-          <span class="rentNow__price">164 $/h</span>
+      <div class="rentNowWrapper">
+        <div class="rentNow">
+          <div>
+            <span class="rentNow__for">Rent for</span>
+            <span class="rentNow__price">164 $/h</span>
+          </div>
+          <button class="rentNow__button">Rent now</button>
         </div>
-        <button class="rentNow__button">Rent now</button>
       </div>
+
+      <div class="gradientBox"></div>
     </div>
   </div>
 </template>
@@ -47,7 +55,10 @@ export default {
 <style scoped>
 .vehicle {
   margin-top: 40px;
-  display: flex;
+
+  &__image {
+    border-radius: 24px;
+  }
 }
 
 .info {
@@ -120,6 +131,91 @@ export default {
     height: 48px;
     width: 136px;
     cursor: pointer;
+  }
+}
+
+.gradientBox {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .vehicle {
+    margin-top: 8px;
+    padding: 0 16px 32px 16px;
+    flex-direction: column;
+
+    &__image {
+      border-radius: 16px;
+      max-width: 343px;
+      width: 100%;
+      max-height: 332px;
+    }
+  }
+
+  .info {
+    margin-left: 0;
+
+    &__title {
+      margin-top: 18px;
+      font-size: 24px;
+    }
+  }
+
+  .nav {
+    margin-top: 16px;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .link {
+    margin-right: 13px;
+  }
+
+  .gradientBox {
+    z-index: 1;
+    display: block;
+    width: 100%;
+    position: fixed;
+    bottom: 100px;
+    height: 34px;
+    background: linear-gradient(
+      180deg,
+      rgba(252, 252, 252, 0) 0%,
+      var(--c-alabaster) 100%
+    );
+  }
+
+  .rentNowWrapper {
+    z-index: 2;
+    position: fixed;
+    bottom: 0;
+    box-sizing: border-box;
+    width: 343px;
+    background-color: var(--c-white);
+    padding-bottom: 32px;
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
+  }
+
+  .rentNow {
+    margin-top: 0;
+    max-width: 536px;
+    width: 100%;
+    padding: 12px 24px;
+
+    &__for {
+      font-size: 16px;
+    }
+
+    &__price {
+      font-size: 16px;
+    }
+
+    &__button {
+      font-size: 14px;
+      width: 111px;
+      height: 44px;
+    }
   }
 }
 </style>

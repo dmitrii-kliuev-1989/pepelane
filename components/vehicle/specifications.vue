@@ -109,4 +109,41 @@ export default {
     font-size: 14px;
   }
 }
+
+@media (max-width: 800px) {
+  .spec {
+    padding-top: 17px;
+
+    &__featuresTitle {
+      font-size: 20px;
+      margin-top: 22px;
+    }
+  }
+
+  .features {
+    margin-top: 24px;
+    padding-bottom: 130px;
+  }
+
+  .feature {
+    &__imageWrapper {
+      box-sizing: border-box;
+      min-width: 64px;
+      max-height: 80px;
+    }
+
+    &__image {
+      width: 24px;
+      height: 24px;
+    }
+
+    &__title {
+      margin-top: 6px;
+    }
+
+    &__info {
+      margin-left: 10px;
+    }
+  }
+}
 </style>
