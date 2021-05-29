@@ -20,10 +20,11 @@ export default {
   align-items: center;
   background-color: var(--c-athens-gray);
   border-radius: 48px;
-  min-height: 100%;
   justify-content: center;
+  flex: 1;
 
   &__msgOne {
+    color: var(--c-midnight);
     font-family: var(--f-bold);
     font-size: 40px;
   }
@@ -44,6 +45,27 @@ export default {
     border-radius: 12px;
     width: 161px;
     height: 48px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  .error {
+    margin-top: 8px;
+    border-radius: 24px;
+    margin-bottom: 20px;
+
+    &__msgOne {
+      font-size: 24px;
+    }
+
+    &__msgTwo {
+      margin-top: 16px;
+    }
+
+    &__button {
+      font-size: 14px;
+    }
   }
 }
 </style>

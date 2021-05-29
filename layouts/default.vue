@@ -6,8 +6,6 @@
 </template>
 
 <style>
-@import 'node_modules/normalize.css';
-
 html {
   font-size: 16px;
   word-spacing: 1px;
@@ -30,14 +28,23 @@ body {
 }
 
 .main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   max-width: 1440px;
   margin: 0 auto;
   padding: 48px 64px;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1215px) {
   .main {
-    padding: 0 0 48px 0;
+    padding: 20px 24px 48px 24px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .main {
+    padding: 20px 10px 48px 10px;
   }
 }
 

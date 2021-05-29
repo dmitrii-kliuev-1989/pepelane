@@ -10,7 +10,7 @@ export default {}
 
 <style>
 .container {
-  margin: 0 auto;
+  height: 100%;
   display: flex;
 }
 </style>

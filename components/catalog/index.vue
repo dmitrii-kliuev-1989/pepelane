@@ -299,7 +299,7 @@ export default {
   border: 1px solid var(--c-slate-gray);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1439px) {
   .catalog {
     padding: 24px 16px;
     margin-top: 8px;
