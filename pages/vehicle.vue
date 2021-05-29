@@ -54,6 +54,7 @@ export default {
 
 <style scoped>
 .vehicle {
+  display: flex;
   margin-top: 40px;
 
   &__image {
