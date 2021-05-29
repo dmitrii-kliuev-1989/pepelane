@@ -35,6 +35,12 @@ body {
   padding: 48px 64px;
 }
 
+@media (max-width: 850px) {
+  .main {
+    padding: 0 0 48px 0;
+  }
+}
+
 @media (max-width: 700px) {
   .main {
     padding: 0;

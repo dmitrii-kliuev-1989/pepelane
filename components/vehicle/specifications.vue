@@ -110,7 +110,7 @@ export default {
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 550px) {
   .spec {
     padding-top: 17px;
 

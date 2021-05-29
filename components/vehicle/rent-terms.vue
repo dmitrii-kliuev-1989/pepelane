@@ -63,8 +63,7 @@ export default {
 ul {
   margin-top: 28px;
   list-style: none;
-  padding: 0;
-  padding-bottom: 131px;
+  padding: 0 0 131px 0;
 }
 
 ul li {
@@ -80,7 +79,7 @@ ul li::before {
   margin: 0 13px 0 0;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 550px) {
   .terms {
     padding-top: 18px;
   }

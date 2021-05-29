@@ -3,7 +3,7 @@
     <img
       class="vehicle__image"
       src="~/assets/images/png/helicopter.png"
-      alt="helicopter"
+      alt="vehicle__image"
     />
     <div class="info">
       <h1 class="info__title">XR-74 «Cooper»</h1>
@@ -101,12 +101,13 @@ export default {
 }
 
 .rentNow {
+  display: flex;
   margin-top: 28px;
-  width: 536px;
+  max-width: 536px;
+  width: 100%;
   height: 80px;
   background-color: var(--c-athens-gray);
   border-radius: 16px;
-  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px 32px;
@@ -139,15 +140,42 @@ export default {
   display: none;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1350px) {
+  .vehicle {
+    &__image {
+      height: 500px;
+    }
+  }
+}
+
+@media (max-width: 1120px) {
+  .vehicle {
+    flex-direction: column;
+
+    &__image {
+      align-self: center;
+    }
+
+    .rentNow {
+      max-width: 1000px;
+      width: 100%;
+    }
+  }
+
+  .info {
+    margin: 0 30px;
+  }
+}
+
+@media (max-width: 550px) {
   .vehicle {
     margin-top: 8px;
     padding: 0 16px 32px 16px;
-    flex-direction: column;
 
     &__image {
       border-radius: 16px;
       max-width: 343px;
+      min-width: 343px;
       width: 100%;
       max-height: 332px;
     }
@@ -155,6 +183,7 @@ export default {
 
   .info {
     margin-left: 0;
+    margin-right: 0;
 
     &__title {
       margin-top: 18px;
@@ -191,7 +220,7 @@ export default {
     position: fixed;
     bottom: 0;
     box-sizing: border-box;
-    width: 343px;
+    width: 93%;
     background-color: var(--c-white);
     padding-bottom: 32px;
     border-top-right-radius: 16px;

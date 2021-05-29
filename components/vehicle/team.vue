@@ -115,7 +115,7 @@ export default {
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 615px) {
   .team {
     padding-bottom: 139px;
   }
