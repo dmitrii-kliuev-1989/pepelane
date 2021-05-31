@@ -1,11 +1,16 @@
 <template>
   <div class="catalog">
     <div class="header">
-      <span class="rent">
-        Rent
-        <span class="whatever">whatever</span>
-        <img src="~/assets/images/svg/arrow-bottom.svg" alt="arrow-bottom" />
-      </span>
+      <div class="rentWhatever">
+        <span class="rent">Rent</span>
+        <select class="typeSelector">
+          <option selected>whatever</option>
+          <option>airship</option>
+          <option>rocket</option>
+          <option>helicopter</option>
+          <option>plane</option>
+        </select>
+      </div>
 
       <div class="addNew">
         <span class="addNew__text">Add new</span>
@@ -15,184 +20,41 @@
       </div>
     </div>
     <div class="items">
-      <NuxtLink class="link" to="/vehicle/specifications">
+      <NuxtLink
+        v-for="vehicle in vehicles"
+        :key="vehicle.id"
+        class="link"
+        :to="`/vehicle/${vehicle.name}/specifications`"
+      >
         <div class="item">
-          <img
-            class="item__image"
-            src="~/assets/images/png/items/item1.png"
-            alt="item1"
-          />
+          <img class="item__image" :src="vehicle.preview" alt="item1" />
           <div class="item__info">
-            <h2 class="item__title">XR-74 «Cooper»</h2>
-            <span class="item__description">
-              Brief description of the project, in a few lines.
+            <h2 class="item__title">{{ vehicle.name }}</h2>
+            <span class="item__description">{{ vehicle.description }}</span>
+            <span class="item__price">
+              {{ vehicle.rent | priceFilter }} $/h
             </span>
-            <span class="item__price">1 278 $/h</span>
           </div>
         </div>
       </NuxtLink>
-      <div class="item">
-        <img
-          class="item__image"
-          src="~/assets/images/png/items/item2.png"
-          alt="item1"
-        />
-        <div class="item__info">
-          <h2 class="item__title">XR-74 «Cooper»</h2>
-          <span class="item__description">
-            Brief description of the project, in a few lines.
-          </span>
-          <span class="item__price">164 $/h</span>
-        </div>
-      </div>
-      <div class="item">
-        <img
-          class="item__image"
-          src="~/assets/images/png/items/item3.png"
-          alt="item1"
-        />
-        <div class="item__info">
-          <h2 class="item__title">XR-74 «Cooper»</h2>
-          <span class="item__description">
-            Brief description of the project, in a few lines.
-          </span>
-          <span class="item__price">164 $/h</span>
-        </div>
-      </div>
-      <div class="item">
-        <img
-          class="item__image"
-          src="~/assets/images/png/items/item3.png"
-          alt="item1"
-        />
-        <div class="item__info">
-          <h2 class="item__title">XR-74 «Cooper»</h2>
-          <span class="item__description">
-            Brief description of the project, in a few lines.
-          </span>
-          <span class="item__price">164 $/h</span>
-        </div>
-      </div>
-      <div class="item">
-        <img
-          class="item__image"
-          src="~/assets/images/png/items/item4.png"
-          alt="item1"
-        />
-        <div class="item__info">
-          <h2 class="item__title">XR-74 «Cooper»</h2>
-          <span class="item__description">
-            Brief description of the project, in a few lines.
-          </span>
-          <span class="item__price">164 $/h</span>
-        </div>
-      </div>
-      <div class="item">
-        <img
-          class="item__image"
-          src="~/assets/images/png/items/item1.png"
-          alt="item1"
-        />
-        <div class="item__info">
-          <h2 class="item__title">XR-74 «Cooper»</h2>
-          <span class="item__description">
-            Brief description of the project, in a few lines.
-          </span>
-          <span class="item__price">1 278 $/h</span>
-        </div>
-      </div>
-      <div class="item">
-        <img
-          class="item__image"
-          src="~/assets/images/png/items/item2.png"
-          alt="item1"
-        />
-        <div class="item__info">
-          <h2 class="item__title">XR-74 «Cooper»</h2>
-          <span class="item__description">
-            Brief description of the project, in a few lines.
-          </span>
-          <span class="item__price">164 $/h</span>
-        </div>
-      </div>
-      <div class="item">
-        <img
-          class="item__image"
-          src="~/assets/images/png/items/item5.png"
-          alt="item1"
-        />
-        <div class="item__info">
-          <h2 class="item__title">XR-74 «Cooper»</h2>
-          <span class="item__description">
-            Brief description of the project, in a few lines.
-          </span>
-          <span class="item__price">164 $/h</span>
-        </div>
-      </div>
-      <div class="item">
-        <img
-          class="item__image"
-          src="~/assets/images/png/items/item4.png"
-          alt="item1"
-        />
-        <div class="item__info">
-          <h2 class="item__title">XR-74 «Cooper»</h2>
-          <span class="item__description">
-            Brief description of the project, in a few lines.
-          </span>
-          <span class="item__price">164 $/h</span>
-        </div>
-      </div>
-      <div class="item">
-        <img
-          class="item__image"
-          src="~/assets/images/png/items/item2.png"
-          alt="item1"
-        />
-        <div class="item__info">
-          <h2 class="item__title">XR-74 «Cooper»</h2>
-          <span class="item__description">
-            Brief description of the project, in a few lines.
-          </span>
-          <span class="item__price">164 $/h</span>
-        </div>
-      </div>
-      <div class="item">
-        <img
-          class="item__image"
-          src="~/assets/images/png/items/item5.png"
-          alt="item1"
-        />
-        <div class="item__info">
-          <h2 class="item__title">XR-74 «Cooper»</h2>
-          <span class="item__description">
-            Brief description of the project, in a few lines.
-          </span>
-          <span class="item__price">164 $/h</span>
-        </div>
-      </div>
-      <div class="item">
-        <img
-          class="item__image"
-          src="~/assets/images/png/items/item4.png"
-          alt="item1"
-        />
-        <div class="item__info">
-          <h2 class="item__title">XR-74 «Cooper»</h2>
-          <span class="item__description">
-            Brief description of the project, in a few lines.
-          </span>
-          <span class="item__price">164 $/h</span>
-        </div>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {
+import Vue from 'vue'
+import { mapState } from 'vuex'
+import priceFilterMixin from '@/mixins/price-filter.js'
+
+export default Vue.extend({
   name: 'Catalog',
-}
+  mixins: [priceFilterMixin],
+  computed: {
+    ...mapState('vehicle', {
+      vehicles: (state) => state.vehicles,
+    }),
+  },
+})
 </script>
 
 <style scoped>
@@ -209,14 +71,28 @@ export default {
   justify-content: space-between;
 }
 
+.rentWhatever {
+  display: flex;
+  align-items: center;
+}
+
 .rent {
   font-family: var(--f-bold);
   color: var(--c-midnight);
   font-size: 40px;
 }
 
-.whatever {
+.typeSelector {
+  border: none;
+  font-family: var(--f-bold);
+  font-size: 40px;
   color: var(--c-dodger-blue);
+  background: var(--c-athens-gray) url('~/assets/images/svg/arrow-bottom.svg')
+    right 0 top 12px no-repeat;
+  appearance: none;
+  width: 240px;
+  outline: none;
+  margin-left: 5px;
 }
 
 .addNew {
@@ -296,10 +172,10 @@ export default {
 }
 
 .link:hover .item {
-  border: 1px solid var(--c-slate-gray);
+  border: 1px solid var(--c-silver-sand);
 }
 
-@media (max-width: 1439px) {
+@media (max-width: 1455px) {
   .catalog {
     padding: 24px 16px;
     margin-top: 8px;
@@ -312,8 +188,12 @@ export default {
     margin-top: 3px;
   }
 
-  .whatever {
-    margin-left: 5px;
+  .typeSelector {
+    font-size: 22px;
+    display: flex;
+    background-position-y: 2px;
+    appearance: none;
+    width: 150px;
   }
 
   .addNew {

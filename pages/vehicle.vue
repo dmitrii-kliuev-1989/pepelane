@@ -1,27 +1,27 @@
 <template>
   <div class="vehicle">
-    <img
-      class="vehicle__image"
-      src="~/assets/images/png/helicopter.png"
-      alt="vehicle__image"
-    />
+    <img class="vehicle__image" :src="imgPath" alt="vehicle__image" />
     <div class="info">
-      <h1 class="info__title">XR-74 «Cooper»</h1>
+      <h1 class="info__title">{{ name }}</h1>
       <div class="nav">
         <NuxtLink
           class="link"
           active-class="link_active"
-          to="/vehicle/specifications"
+          :to="`/vehicle/${$route.params.name}/specifications`"
         >
           Specifications
         </NuxtLink>
-        <NuxtLink class="link" active-class="link_active" to="/vehicle/team">
+        <NuxtLink
+          class="link"
+          active-class="link_active"
+          :to="`/vehicle/${$route.params.name}/team`"
+        >
           Team
         </NuxtLink>
         <NuxtLink
           class="link"
           active-class="link_active"
-          to="/vehicle/rent-terms"
+          :to="`/vehicle/${$route.params.name}/rent-terms`"
         >
           Rent terms
         </NuxtLink>
@@ -35,7 +35,7 @@
         <div class="rentNow">
           <div>
             <span class="rentNow__for">Rent for</span>
-            <span class="rentNow__price">164 $/h</span>
+            <span class="rentNow__price">{{ rent | priceFilter }} $/h</span>
           </div>
           <button class="rentNow__button">Rent now</button>
         </div>
@@ -47,8 +47,34 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import priceFilterMixin from '@/mixins/price-filter'
+
 export default {
   name: 'Vehicle',
+  mixins: [priceFilterMixin],
+  computed: {
+    ...mapGetters('vehicle', {
+      getVehicle: 'getVehicle',
+    }),
+    id() {
+      return this.currentVehicle()?.id
+    },
+    name() {
+      return this.currentVehicle()?.name
+    },
+    imgPath() {
+      return this.currentVehicle()?.image
+    },
+    rent() {
+      return this.currentVehicle()?.rent
+    },
+  },
+  methods: {
+    currentVehicle() {
+      return this.getVehicle(this.$route.params.name)
+    },
+  },
 }
 </script>
 
@@ -59,6 +85,7 @@ export default {
 
   &__image {
     border-radius: 24px;
+    height: 700px;
   }
 }
 
@@ -81,7 +108,7 @@ export default {
 }
 
 .childContent {
-  height: 400px;
+  min-height: 400px;
 }
 
 .link {

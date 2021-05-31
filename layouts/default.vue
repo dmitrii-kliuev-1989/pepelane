@@ -5,6 +5,17 @@
   </div>
 </template>
 
+<script>
+import Vue from 'vue'
+import { ACTION_TYPES } from '@/store/vehicle'
+
+export default Vue.extend({
+  created() {
+    this.$store.dispatch(`vehicle/${ACTION_TYPES.INIT_STATE}`)
+  },
+})
+</script>
+
 <style>
 html {
   font-size: 16px;
@@ -36,7 +47,7 @@ body {
   padding: 48px 64px;
 }
 
-@media (max-width: 1215px) {
+@media (max-width: 1230px) {
   .main {
     padding: 20px 24px 48px 24px;
   }

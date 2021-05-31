@@ -1,8 +1,6 @@
 <template>
   <div class="team">
-    <span class="team__description">
-      Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-    </span>
+    <span class="team__description">{{ teamText }}</span>
     <h2 class="team__title">Qualified specialists</h2>
     <div class="specialists">
       <div class="specialist">
@@ -48,8 +46,23 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'Team',
+  computed: {
+    ...mapGetters('vehicle', {
+      getVehicle: 'getVehicle',
+    }),
+    teamText() {
+      return this.currentVehicle()?.team_text
+    },
+  },
+  methods: {
+    currentVehicle() {
+      return this.getVehicle(this.$route.params.name)
+    },
+  },
 }
 </script>
 

@@ -1,8 +1,6 @@
 <template>
   <div class="terms">
-    <span class="descriptionPartOne text">
-      Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-    </span>
+    <span class="descriptionPartOne text">{{ termText }}</span>
     <span class="descriptionPartTwo text">
       Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
       Velit officia consequat duis enim velit mollit. Exercitation veniam
@@ -30,8 +28,23 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'RentTerms',
+  computed: {
+    ...mapGetters('vehicle', {
+      getVehicle: 'getVehicle',
+    }),
+    termText() {
+      return this.currentVehicle()?.term_text
+    },
+  },
+  methods: {
+    currentVehicle() {
+      return this.getVehicle(this.$route.params.name)
+    },
+  },
 }
 </script>
 
@@ -49,9 +62,6 @@ export default {
   line-height: 20px;
 }
 
-.descriptionPartOne {
-}
-
 .descriptionPartTwo {
   margin-top: 16px;
 }
@@ -63,7 +73,6 @@ export default {
 ul {
   margin-top: 28px;
   list-style: none;
-  padding: 0 0 131px 0;
 }
 
 ul li {
@@ -86,6 +95,10 @@ ul li::before {
 
   .descriptionPartOne {
     margin-top: 0;
+  }
+
+  ul {
+    padding-bottom: 131px;
   }
 
   .descriptionPartTwo {

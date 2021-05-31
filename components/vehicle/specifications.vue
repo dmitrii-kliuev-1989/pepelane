@@ -1,10 +1,6 @@
 <template>
   <div class="spec">
-    <span class="spec__text">
-      Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
-      Velit officia consequat duis enim velit mollit. Exercitation veniam
-      consequat sunt nostrud amet.
-    </span>
+    <span class="spec__text">{{ specificationsText }}}</span>
     <h2 class="spec__featuresTitle">Features:</h2>
     <div class="features">
       <div class="feature">
@@ -44,8 +40,23 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'Specifications',
+  computed: {
+    ...mapGetters('vehicle', {
+      getVehicle: 'getVehicle',
+    }),
+    specificationsText() {
+      return this.currentVehicle()?.specifications_text
+    },
+  },
+  methods: {
+    currentVehicle() {
+      return this.getVehicle(this.$route.params.name)
+    },
+  },
 }
 </script>
 
