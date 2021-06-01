@@ -1,8 +1,8 @@
 # pepelane
 vehicle rental
 
-• HTML, CSS, JavaScript
-• Vue.js,  PostCss, routing, vuex 
+• HTML, CSS, JavaScript  
+• Vue.js,  PostCss, routing, vuex   
 • responsive and adaptive design
 
 Live demo: https://dmitrii-kliuev.github.io/pepelane  
