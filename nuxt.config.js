@@ -1,4 +1,5 @@
-export default {
+// eslint-disable-next-line nuxt/no-cjs-in-config
+module.exports = {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
