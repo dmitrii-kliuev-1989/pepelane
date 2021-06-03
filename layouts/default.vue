@@ -7,7 +7,7 @@
 
 <script>
 import Vue from 'vue'
-import { ACTION_TYPES } from '@/store/vehicle'
+import { ACTION_TYPES } from '~/constants'
 
 export default Vue.extend({
   created() {

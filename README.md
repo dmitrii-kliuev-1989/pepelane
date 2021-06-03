@@ -6,7 +6,7 @@ vehicle rental
 • responsive and adaptive design
 
 Live demo: [link](http://pepelane.dmitrii-kliuev.net/pepelane/)  
-Design in figma: [link](https://www.figma.com/file/WJrqlFsNwwQkzXQXoEVGd1/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%B5---Front-end?node-id=34%3A0) 
+Design in figma: [link](https://www.figma.com/file/WJrqlFsNwwQkzXQXoEVGd1/Design-Front-end?node-id=41%3A27) 
 
 ## Build Setup
 

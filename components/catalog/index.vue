@@ -3,12 +3,15 @@
     <div class="header">
       <div class="rentWhatever">
         <span class="rent">Rent</span>
-        <select class="typeSelector">
-          <option selected>whatever</option>
-          <option>airship</option>
-          <option>rocket</option>
-          <option>helicopter</option>
-          <option>plane</option>
+        <select
+          v-model="selected"
+          class="typeSelector"
+          @change="setSelectedVehicleType"
+        >
+          <option selected>{{ whatever }}</option>
+          <option v-for="(type, index) of vehicleTypes" :key="index">
+            {{ type }}
+          </option>
         </select>
       </div>
 
@@ -21,7 +24,7 @@
     </div>
     <div class="items">
       <NuxtLink
-        v-for="vehicle in vehicles"
+        v-for="vehicle in filteredVehicles"
         :key="vehicle.id"
         class="link"
         :to="`/vehicle/${vehicle.name}/specifications`"
@@ -45,14 +48,38 @@
 import Vue from 'vue'
 import { mapState } from 'vuex'
 import priceFilterMixin from '@/mixins/price-filter.js'
+import { defaultVehicleType } from '~/constants'
 
 export default Vue.extend({
   name: 'Catalog',
   mixins: [priceFilterMixin],
+  data() {
+    return {
+      selected: '',
+    }
+  },
   computed: {
     ...mapState('vehicle', {
       vehicles: (state) => state.vehicles,
+      vehicleTypes: (state) => state.vehicleTypes,
+      selectedVehicleType: (state) => state.selectedVehicleType,
     }),
+    filteredVehicles() {
+      return this.selected === defaultVehicleType
+        ? this.vehicles
+        : this.vehicles.filter((c) => c.type === this.selected)
+    },
+    whatever() {
+      return defaultVehicleType
+    },
+  },
+  mounted() {
+    this.selected = this.selectedVehicleType
+  },
+  methods: {
+    setSelectedVehicleType() {
+      this.$store.commit('vehicle/setSelectedVehicleType', this.selected)
+    },
   },
 })
 </script>
