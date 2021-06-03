@@ -86,6 +86,7 @@ export default {
   &__image {
     border-radius: 24px;
     height: 700px;
+    min-width: 700px;
   }
 }
 
@@ -171,6 +172,7 @@ export default {
   .vehicle {
     &__image {
       height: 500px;
+      min-width: 500px;
     }
   }
 }

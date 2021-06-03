@@ -1,6 +1,6 @@
 <template>
   <div class="spec">
-    <span class="spec__text">{{ specificationsText }}}</span>
+    <span class="spec__text">{{ specificationsText }}</span>
     <h2 class="spec__featuresTitle">Features:</h2>
     <div class="features">
       <div class="feature">
