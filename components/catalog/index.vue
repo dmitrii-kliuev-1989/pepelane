@@ -27,7 +27,7 @@
         v-for="vehicle in filteredVehicles"
         :key="vehicle.id"
         class="link"
-        :to="`/vehicle/${vehicle.name}/specifications`"
+        :to="`/vehicle/${vehicle.id}/specifications`"
       >
         <div class="item">
           <img class="item__image" :src="vehicle.preview" alt="item1" />
@@ -101,6 +101,7 @@ export default Vue.extend({
 .rentWhatever {
   display: flex;
   align-items: center;
+  user-select: none;
 }
 
 .rent {
@@ -120,11 +121,18 @@ export default Vue.extend({
   width: 240px;
   outline: none;
   margin-left: 5px;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--c-blue);
+  }
 }
 
 .addNew {
   display: flex;
   align-items: center;
+  user-select: none;
+  cursor: pointer;
 
   &__text {
     font-family: var(--f-bold);
@@ -143,6 +151,14 @@ export default Vue.extend({
     align-items: center;
     justify-content: center;
   }
+}
+
+.addNew:hover .addNew__btn {
+  background-color: var(--c-blue);
+}
+
+.addNew:hover .addNew__text {
+  color: var(--c-blue);
 }
 
 .items {

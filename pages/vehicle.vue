@@ -7,21 +7,21 @@
         <NuxtLink
           class="link"
           active-class="link_active"
-          :to="`/vehicle/${$route.params.name}/specifications`"
+          :to="`/vehicle/${$route.params.id}/specifications`"
         >
           Specifications
         </NuxtLink>
         <NuxtLink
           class="link"
           active-class="link_active"
-          :to="`/vehicle/${$route.params.name}/team`"
+          :to="`/vehicle/${$route.params.id}/team`"
         >
           Team
         </NuxtLink>
         <NuxtLink
           class="link"
           active-class="link_active"
-          :to="`/vehicle/${$route.params.name}/rent-terms`"
+          :to="`/vehicle/${$route.params.id}/rent-terms`"
         >
           Rent terms
         </NuxtLink>
@@ -72,7 +72,7 @@ export default {
   },
   methods: {
     currentVehicle() {
-      return this.getVehicle(this.$route.params.name)
+      return this.getVehicle(this.$route.params.id)
     },
   },
 }
@@ -118,6 +118,7 @@ export default {
   font-size: 16px;
   cursor: pointer;
   text-decoration: none;
+  user-select: none;
 
   &_active {
     color: var(--c-dodger-blue);
@@ -139,6 +140,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 16px 32px;
+  user-select: none;
 
   &__for {
     color: var(--c-midnight);
@@ -161,6 +163,10 @@ export default {
     height: 48px;
     width: 136px;
     cursor: pointer;
+
+    &:hover {
+      background-color: var(--c-blue);
+    }
   }
 }
 

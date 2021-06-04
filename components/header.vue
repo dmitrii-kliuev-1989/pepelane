@@ -51,6 +51,7 @@ export default {
 .logo {
   margin-top: 4px;
   display: flex;
+  user-select: none;
 }
 
 .pepelane__img {
@@ -67,6 +68,13 @@ export default {
 .nightMod {
   margin: auto 0 auto auto;
   display: flex;
+  user-select: none;
+  cursor: pointer;
+
+  &__image {
+    transform: scale(1);
+    transition-duration: 0.3s;
+  }
 
   &__text {
     margin: 0 0 0 16px;
@@ -76,16 +84,40 @@ export default {
   }
 }
 
+.nightMod:hover .nightMod__image {
+  transform: scale(1.3);
+  transition-duration: 0.3s;
+}
+
 .messagesImage {
-  margin-left: 105px;
+  margin: auto 0 auto 105px;
+  user-select: none;
+  cursor: pointer;
+  transform: scale(1);
+  transition-duration: 0.3s;
+
+  &:hover {
+    transform: scale(1.3);
+    transition-duration: 0.3s;
+  }
 }
 
 .bellImage {
-  margin-left: 24px;
+  margin: auto 0 auto 24px;
+  user-select: none;
+  cursor: pointer;
+  transform: scale(1);
+  transition-duration: 0.3s;
+
+  &:hover {
+    transform: scale(1.3);
+    transition-duration: 0.3s;
+  }
 }
 
 .person {
   display: flex;
+  user-select: none;
 
   &__name {
     margin-left: 47px;

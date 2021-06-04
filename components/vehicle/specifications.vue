@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     currentVehicle() {
-      return this.getVehicle(this.$route.params.name)
+      return this.getVehicle(this.$route.params.id)
     },
   },
 }

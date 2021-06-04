@@ -46,6 +46,12 @@ export default {
     width: 161px;
     height: 48px;
     font-size: 16px;
+    user-select: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--c-blue);
+    }
   }
 }
 

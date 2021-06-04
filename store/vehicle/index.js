@@ -8,10 +8,10 @@ export const state = () => ({
 })
 
 export const getters = {
-  getVehicle: (state) => (name) => {
+  getVehicle: (state) => (id) => {
     const { vehicles } = state
 
-    return vehicles.find((c) => c.name === name)
+    return vehicles.find((c) => c.id === id)
   },
 }
 
