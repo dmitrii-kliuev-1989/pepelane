@@ -6,6 +6,7 @@
         <select
           v-model="selected"
           class="typeSelector"
+          :class="theme"
           @change="setSelectedVehicleType"
         >
           <option selected>{{ whatever }}</option>
@@ -139,6 +140,14 @@ export default Vue.extend({
   outline: none;
   margin-left: 5px;
   cursor: pointer;
+
+  &.dark {
+    background-color: var(--c-midnight-2);
+  }
+
+  &.light {
+    background-color: var(--c-athens-gray);
+  }
 }
 
 .addNew {
@@ -227,7 +236,7 @@ export default Vue.extend({
     line-height: 18px;
 
     &.dark {
-      color: var(--c-alabaster);
+      color: var(--c-gull-gray);
     }
 
     &.light {
