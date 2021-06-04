@@ -1,15 +1,15 @@
 <template>
   <div class="terms">
-    <span class="descriptionPartOne text">{{ termText }}</span>
-    <span class="descriptionPartTwo text">
+    <span class="descriptionPartOne text" :class="theme">{{ termText }}</span>
+    <span class="descriptionPartTwo text" :class="theme">
       Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
       Velit officia consequat duis enim velit mollit. Exercitation veniam
       consequat sunt nostrud amet.
     </span>
 
-    <h3 class="additionalConditions">Additional conditions:</h3>
+    <h3 class="additionalConditions" :class="theme">Additional conditions:</h3>
 
-    <ul class="conditions text">
+    <ul class="conditions text" :class="theme">
       <li>
         Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
         sint. Velit officia consequat duis enim velit mollit. Exercitation
@@ -28,13 +28,16 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'RentTerms',
   computed: {
     ...mapGetters('vehicle', {
       getVehicle: 'getVehicle',
+    }),
+    ...mapState('vehicle', {
+      theme: (state) => state.theme,
     }),
     termText() {
       return this.currentVehicle()?.term_text
@@ -56,10 +59,17 @@ export default {
 }
 
 .text {
-  color: var(--c-slate-gray);
   font-family: var(--f-reg);
   font-size: 14px;
   line-height: 20px;
+
+  &.dark {
+    color: var(--c-gull-gray);
+  }
+
+  &.light {
+    color: var(--c-slate-gray);
+  }
 }
 
 .descriptionPartTwo {
@@ -68,6 +78,14 @@ export default {
 
 .additionalConditions {
   margin-top: 22px;
+
+  &.dark {
+    color: var(--c-alabaster);
+  }
+
+  &.light {
+    color: var(--c-midnight);
+  }
 }
 
 ul {

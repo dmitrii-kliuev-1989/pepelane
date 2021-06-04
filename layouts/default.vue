@@ -1,15 +1,23 @@
 <template>
-  <div class="main">
-    <Header />
-    <Nuxt />
+  <div class="mainWrapper" :class="theme">
+    <div class="main">
+      <Header />
+      <Nuxt />
+    </div>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
+import { mapState } from 'vuex'
 import { ACTION_TYPES } from '~/constants'
 
 export default Vue.extend({
+  computed: {
+    ...mapState('vehicle', {
+      theme: (state) => state.theme,
+    }),
+  },
   created() {
     this.$store.dispatch(`vehicle/${ACTION_TYPES.INIT_STATE}`)
   },
@@ -34,8 +42,12 @@ html {
   margin: 0;
 }
 
-body {
+.mainWrapper.light {
   background-color: var(--c-alabaster);
+}
+
+.mainWrapper.dark {
+  background-color: var(--c-midnight);
 }
 
 .main {

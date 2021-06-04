@@ -1,10 +1,16 @@
 import { getVehicles } from 'assets/api/api/request'
-import { ACTION_TYPES, defaultVehicleType } from '~/constants'
+import {
+  ACTION_TYPES,
+  darkTheme,
+  defaultVehicleType,
+  lightTheme,
+} from '~/constants'
 
 export const state = () => ({
   vehicles: [],
   vehicleTypes: [],
   selectedVehicleType: defaultVehicleType,
+  theme: lightTheme,
 })
 
 export const getters = {
@@ -25,6 +31,12 @@ export const mutations = {
   },
   setSelectedVehicleType(state, newType) {
     state.selectedVehicleType = newType
+  },
+  toggleTheme(state) {
+    state.theme =
+      state.theme === lightTheme
+        ? (state.theme = darkTheme)
+        : (state.theme = lightTheme)
   },
 }
 

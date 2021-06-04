@@ -1,8 +1,8 @@
 <template>
-  <div class="catalog">
+  <div class="catalog" :class="theme">
     <div class="header">
       <div class="rentWhatever">
-        <span class="rent">Rent</span>
+        <span class="rent" :class="theme">Rent</span>
         <select
           v-model="selected"
           class="typeSelector"
@@ -29,11 +29,13 @@
         class="link"
         :to="`/vehicle/${vehicle.id}/specifications`"
       >
-        <div class="item">
+        <div class="item" :class="theme">
           <img class="item__image" :src="vehicle.preview" alt="item1" />
           <div class="item__info">
-            <h2 class="item__title">{{ vehicle.name }}</h2>
-            <span class="item__description">{{ vehicle.description }}</span>
+            <h2 class="item__title" :class="theme">{{ vehicle.name }}</h2>
+            <span class="item__description" :class="theme">
+              {{ vehicle.description }}
+            </span>
             <span class="item__price">
               {{ vehicle.rent | priceFilter }} $/h
             </span>
@@ -63,6 +65,7 @@ export default Vue.extend({
       vehicles: (state) => state.vehicles,
       vehicleTypes: (state) => state.vehicleTypes,
       selectedVehicleType: (state) => state.selectedVehicleType,
+      theme: (state) => state.theme,
     }),
     filteredVehicles() {
       return this.selected === defaultVehicleType
@@ -86,11 +89,18 @@ export default Vue.extend({
 
 <style scoped>
 .catalog {
-  background-color: var(--c-athens-gray);
   width: 100%;
   border-radius: 48px;
   margin-top: 40px;
   padding: 56px 64px;
+
+  &.dark {
+    background-color: var(--c-midnight-2);
+  }
+
+  &.light {
+    background-color: var(--c-athens-gray);
+  }
 }
 
 .header {
@@ -106,8 +116,15 @@ export default Vue.extend({
 
 .rent {
   font-family: var(--f-bold);
-  color: var(--c-midnight);
   font-size: 40px;
+
+  &.dark {
+    color: var(--c-alabaster);
+  }
+
+  &.light {
+    color: var(--c-midnight);
+  }
 }
 
 .typeSelector {
@@ -115,17 +132,13 @@ export default Vue.extend({
   font-family: var(--f-bold);
   font-size: 40px;
   color: var(--c-dodger-blue);
-  background: var(--c-athens-gray) url('~/assets/images/svg/arrow-bottom.svg')
-    right 0 top 12px no-repeat;
+  background: url('~/assets/images/svg/arrow-bottom.svg') right 0 top 12px
+    no-repeat;
   appearance: none;
   width: 240px;
   outline: none;
   margin-left: 5px;
   cursor: pointer;
-
-  &:hover {
-    color: var(--c-blue);
-  }
 }
 
 .addNew {
@@ -170,11 +183,17 @@ export default Vue.extend({
 
 .item {
   display: flex;
-  background-color: var(--c-white);
   height: 164px;
   border-radius: 32px;
   padding: 24px 32px;
-  border: 1px solid var(--c-white);
+
+  &.dark {
+    border: 1px solid transparent;
+  }
+
+  &.light {
+    border: 1px solid var(--c-white);
+  }
 
   &__image {
     height: 88px;
@@ -189,17 +208,31 @@ export default Vue.extend({
 
   &__title {
     margin-top: 16px;
-    color: var(--c-midnight);
     font-family: var(--f-bold);
     font-size: 14px;
+
+    &.dark {
+      color: var(--c-alabaster);
+    }
+
+    &.light {
+      color: var(--c-midnight);
+    }
   }
 
   &__description {
     font-family: var(--f-reg);
     margin-top: 12px;
-    color: var(--c-slate-gray);
     font-size: 12px;
     line-height: 18px;
+
+    &.dark {
+      color: var(--c-alabaster);
+    }
+
+    &.light {
+      color: var(--c-slate-gray);
+    }
   }
 
   &__price {
@@ -207,6 +240,14 @@ export default Vue.extend({
     color: var(--c-brilliant-rose);
     font-family: var(--f-bold);
     font-size: 14px;
+  }
+
+  &.dark {
+    background-color: var(--c-midnight);
+  }
+
+  &.light {
+    background-color: var(--c-white);
   }
 }
 

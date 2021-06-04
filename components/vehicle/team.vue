@@ -1,7 +1,7 @@
 <template>
   <div class="team">
-    <span class="team__description">{{ teamText }}</span>
-    <h2 class="team__title">Qualified specialists</h2>
+    <span class="team__description" :class="theme">{{ teamText }}</span>
+    <h2 class="team__title" :class="theme">Qualified specialists</h2>
     <div class="specialists">
       <div class="specialist">
         <img
@@ -10,8 +10,8 @@
           alt="pilot-assistant"
         />
         <div class="specialist__info">
-          <span class="specialist__name">Marvin McKinney</span>
-          <span class="specialist__role">Pilot assistant</span>
+          <span class="specialist__name" :class="theme">Marvin McKinney</span>
+          <span class="specialist__role" :class="theme">Pilot assistant</span>
         </div>
       </div>
       <div class="specialist">
@@ -21,8 +21,8 @@
           alt="mechanic"
         />
         <div class="specialist__info">
-          <span class="specialist__name">Savannah Nguyen</span>
-          <span class="specialist__role">Mechanic</span>
+          <span class="specialist__name" :class="theme">Savannah Nguyen</span>
+          <span class="specialist__role" :class="theme">Mechanic</span>
         </div>
       </div>
       <div class="specialist">
@@ -32,12 +32,12 @@
           alt="stewardess"
         />
         <div class="specialist__info">
-          <span class="specialist__name">Courtney Henry</span>
-          <span class="specialist__role">Stewardess</span>
+          <span class="specialist__name" :class="theme">Courtney Henry</span>
+          <span class="specialist__role" :class="theme">Stewardess</span>
         </div>
       </div>
     </div>
-    <span class="specialists__description">
+    <span class="specialists__description" :class="theme">
       Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
       Velit officia consequat duis enim velit mollit. Exercitation veniam
       consequat sunt nostrud amet.
@@ -46,13 +46,16 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   name: 'Team',
   computed: {
     ...mapGetters('vehicle', {
       getVehicle: 'getVehicle',
+    }),
+    ...mapState('vehicle', {
+      theme: (state) => state.theme,
     }),
     teamText() {
       return this.currentVehicle()?.team_text
@@ -77,6 +80,14 @@ export default {
     color: var(--c-slate-gray);
     font-size: 14px;
     line-height: 20px;
+
+    &.dark {
+      color: var(--c-gull-gray);
+    }
+
+    &.light {
+      color: var(--c-slate-gray);
+    }
   }
 
   &__title {
@@ -96,6 +107,14 @@ export default {
     color: var(--c-slate-gray);
     font-size: 14px;
     line-height: 20px;
+
+    &.dark {
+      color: var(--c-gull-gray);
+    }
+
+    &.light {
+      color: var(--c-slate-gray);
+    }
   }
 }
 
@@ -116,8 +135,16 @@ export default {
   &__name {
     margin-top: 13px;
     font-family: var(--f-bold);
-    color: var(--c-midnight);
+
     font-size: 16px;
+
+    &.dark {
+      color: var(--c-alabaster);
+    }
+
+    &.light {
+      color: var(--c-midnight);
+    }
   }
 
   &__role {
@@ -125,6 +152,14 @@ export default {
     color: var(--c-slate-gray);
     font-family: var(--f-reg);
     font-size: 12px;
+
+    &.dark {
+      color: var(--c-gull-gray);
+    }
+
+    &.light {
+      color: var(--c-slate-gray);
+    }
   }
 }
 

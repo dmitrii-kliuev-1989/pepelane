@@ -4,3 +4,5 @@ export const ACTION_TYPES = {
 }
 
 export const defaultVehicleType = 'whatever'
+export const lightTheme = 'light'
+export const darkTheme = 'dark'

@@ -2,22 +2,16 @@
   <div class="header">
     <NuxtLink to="/">
       <div class="logo">
-        <img class="logo__img" src="~/assets/images/svg/Logo.svg" alt="logo" />
-        <img
-          class="pepelane__img"
-          src="~/assets/images/svg/Pepelane.svg"
-          alt="Pepelane"
-        />
+        <img class="logo__img" :src="logoPath" alt="logo" />
+        <img class="pepelane__img" :src="pepelaneImgPath" alt="Pepelane" />
       </div>
     </NuxtLink>
-    <div class="sharing">World's first affordable airsharing</div>
-    <div class="nightMod">
-      <img
-        class="nightMod__image"
-        src="~/assets/images/svg/night-mod.svg"
-        alt="night-mod"
-      />
-      <span class="nightMod__text">Night mod</span>
+    <div class="sharing" :class="theme">
+      World's first affordable airsharing
+    </div>
+    <div class="mod" @click="toggleTheme">
+      <img class="mod__image" :src="modeImagePath" alt="mod" />
+      <span class="mod__text" :class="theme">{{ modText }}</span>
     </div>
     <img
       class="messagesImage"
@@ -26,7 +20,7 @@
     />
     <img class="bellImage" src="~/assets/images/svg/bell.svg" alt="bell" />
     <div class="person">
-      <div class="person__name">Bessie Cooper</div>
+      <div class="person__name" :class="theme">Bessie Cooper</div>
       <img
         class="person__image"
         src="~/assets/images/png/person.png"
@@ -37,9 +31,41 @@
 </template>
 
 <script>
-export default {
+import Vue from 'vue'
+import { mapState } from 'vuex'
+import { lightTheme } from '~/constants'
+
+export default Vue.extend({
   name: 'Header',
-}
+  computed: {
+    ...mapState('vehicle', {
+      theme: (state) => state.theme,
+    }),
+    logoPath() {
+      return this.theme === lightTheme
+        ? require('~/assets/images/svg/Logo-light-theme.svg')
+        : require('~/assets/images/svg/Logo-dark-theme.svg')
+    },
+    pepelaneImgPath() {
+      return this.theme === lightTheme
+        ? require('../assets/images/svg/Pepelane-light-theme.svg')
+        : require('../assets/images/svg/Pepelane-dark-theme.svg')
+    },
+    modeImagePath() {
+      return this.theme === lightTheme
+        ? require('../assets/images/svg/night-mod.svg')
+        : require('../assets/images/svg/day-mode.svg')
+    },
+    modText() {
+      return this.theme === lightTheme ? 'Night mod' : 'Day mod'
+    },
+  },
+  methods: {
+    toggleTheme() {
+      this.$store.commit('vehicle/toggleTheme')
+    },
+  },
+})
 </script>
 
 <style scoped>
@@ -60,14 +86,22 @@ export default {
 
 .sharing {
   font-family: var(--f-reg);
-  color: var(--c-slate-gray);
   margin: auto 0 auto 65px;
   white-space: nowrap;
+
+  &.dark {
+    color: var(--c-gull-gray);
+  }
+
+  &.light {
+    color: var(--c-slate-gray);
+  }
 }
 
-.nightMod {
+.mod {
   margin: auto 0 auto auto;
   display: flex;
+  width: 121px;
   user-select: none;
   cursor: pointer;
 
@@ -79,12 +113,19 @@ export default {
   &__text {
     margin: 0 0 0 16px;
     font-family: var(--f-reg);
-    color: var(--c-slate-gray);
     white-space: nowrap;
+
+    &.dark {
+      color: var(--c-gull-gray);
+    }
+
+    &.light {
+      color: var(--c-slate-gray);
+    }
   }
 }
 
-.nightMod:hover .nightMod__image {
+.mod:hover .mod__image {
   transform: scale(1.3);
   transition-duration: 0.3s;
 }
@@ -124,6 +165,14 @@ export default {
     align-self: center;
     white-space: nowrap;
     font-family: var(--f-bold);
+
+    &.dark {
+      color: var(--c-alabaster);
+    }
+
+    &.light {
+      color: var(--c-midnight);
+    }
   }
 
   &__image {
@@ -139,7 +188,7 @@ export default {
 }
 
 @media (max-width: 920px) {
-  .nightMod__text {
+  .mod__text {
     display: none;
   }
 
@@ -177,7 +226,7 @@ export default {
     margin-top: 6px;
   }
 
-  .nightMod__image {
+  .mod__image {
     height: 18px;
     margin: 0;
   }

@@ -2,10 +2,11 @@
   <div class="vehicle">
     <img class="vehicle__image" :src="imgPath" alt="vehicle__image" />
     <div class="info">
-      <h1 class="info__title">{{ name }}</h1>
+      <h1 class="info__title" :class="theme">{{ title }}</h1>
       <div class="nav">
         <NuxtLink
           class="link"
+          :class="theme"
           active-class="link_active"
           :to="`/vehicle/${$route.params.id}/specifications`"
         >
@@ -13,6 +14,7 @@
         </NuxtLink>
         <NuxtLink
           class="link"
+          :class="theme"
           active-class="link_active"
           :to="`/vehicle/${$route.params.id}/team`"
         >
@@ -20,6 +22,7 @@
         </NuxtLink>
         <NuxtLink
           class="link"
+          :class="theme"
           active-class="link_active"
           :to="`/vehicle/${$route.params.id}/rent-terms`"
         >
@@ -31,23 +34,23 @@
         <NuxtChild />
       </div>
 
-      <div class="rentNowWrapper">
-        <div class="rentNow">
+      <div class="rentNowWrapper" :class="theme">
+        <div class="rentNow" :class="theme">
           <div>
-            <span class="rentNow__for">Rent for</span>
+            <span class="rentNow__for" :class="theme">Rent for</span>
             <span class="rentNow__price">{{ rent | priceFilter }} $/h</span>
           </div>
           <button class="rentNow__button">Rent now</button>
         </div>
       </div>
 
-      <div class="gradientBox"></div>
+      <div class="gradientBox" :class="theme"></div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import priceFilterMixin from '@/mixins/price-filter'
 
 export default {
@@ -57,10 +60,13 @@ export default {
     ...mapGetters('vehicle', {
       getVehicle: 'getVehicle',
     }),
+    ...mapState('vehicle', {
+      theme: (state) => state.theme,
+    }),
     id() {
       return this.currentVehicle()?.id
     },
-    name() {
+    title() {
       return this.currentVehicle()?.name
     },
     imgPath() {
@@ -97,7 +103,14 @@ export default {
     font-family: var(--f-bold);
     margin-top: 54px;
     font-size: 40px;
-    color: var(--c-midnight);
+
+    &.dark {
+      color: var(--c-alabaster);
+    }
+
+    &.light {
+      color: var(--c-midnight);
+    }
   }
 }
 
@@ -114,14 +127,21 @@ export default {
 
 .link {
   font-family: var(--f-bold);
-  color: var(--c-slate-gray);
   font-size: 16px;
   cursor: pointer;
   text-decoration: none;
   user-select: none;
 
+  &.dark {
+    color: var(--c-gull-gray);
+  }
+
+  &.light {
+    color: var(--c-slate-gray);
+  }
+
   &_active {
-    color: var(--c-dodger-blue);
+    color: var(--c-dodger-blue) !important;
   }
 
   &:hover {
@@ -135,17 +155,31 @@ export default {
   max-width: 536px;
   width: 100%;
   height: 80px;
-  background-color: var(--c-athens-gray);
   border-radius: 16px;
   justify-content: space-between;
   align-items: center;
   padding: 16px 32px;
   user-select: none;
 
+  &.dark {
+    background-color: var(--c-midnight-2);
+  }
+
+  &.light {
+    background-color: var(--c-athens-gray);
+  }
+
   &__for {
-    color: var(--c-midnight);
     font-family: var(--f-bold);
     font-size: 20px;
+
+    &.dark {
+      color: var(--c-alabaster);
+    }
+
+    &.light {
+      color: var(--c-midnight);
+    }
   }
 
   &__price {
@@ -243,11 +277,22 @@ export default {
     position: fixed;
     bottom: 100px;
     height: 34px;
-    background: linear-gradient(
-      180deg,
-      rgba(252, 252, 252, 0) 0%,
-      var(--c-alabaster) 100%
-    );
+
+    &.dark {
+      background: linear-gradient(
+        180deg,
+        rgba(1, 35, 69, 0) 0%,
+        var(--c-midnight) 100%
+      );
+    }
+
+    &.light {
+      background: linear-gradient(
+        180deg,
+        rgba(252, 252, 252, 0) 0%,
+        var(--c-alabaster) 100%
+      );
+    }
   }
 
   .rentNowWrapper {
@@ -256,10 +301,18 @@ export default {
     bottom: 0;
     box-sizing: border-box;
     width: 93%;
-    background-color: var(--c-white);
+
     padding-bottom: 32px;
     border-top-right-radius: 16px;
     border-top-left-radius: 16px;
+
+    &.dark {
+      background-color: var(--c-midnight);
+    }
+
+    &.light {
+      background-color: var(--c-white);
+    }
   }
 
   .rentNow {
