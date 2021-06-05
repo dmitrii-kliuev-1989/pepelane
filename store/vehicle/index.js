@@ -26,9 +26,12 @@ export const mutations = {
   initState(state, newVehicles) {
     state.vehicles = newVehicles
   },
-  initVehicleTypes(state, newVehicles) {
-    const { vehicleTypes } = state
-    vehicleTypes.push(...new Set(newVehicles.map((c) => c.type)))
+  addNewVehicle(state, newVehicle) {
+    state.vehicles.push(newVehicle)
+    fnInitVehicleTypes(state, state.vehicles)
+  },
+  initVehicleTypes(state, vehicles) {
+    fnInitVehicleTypes(state, vehicles)
   },
   setSelectedVehicleType(state, newType) {
     state.selectedVehicleType = newType
@@ -50,4 +53,9 @@ export const actions = {
     commit('initState', newVehicles)
     commit('initVehicleTypes', newVehicles)
   },
+}
+
+function fnInitVehicleTypes(state, vehicles) {
+  state.vehicleTypes = []
+  state.vehicleTypes.push(...new Set(vehicles.map((c) => c.type)))
 }
