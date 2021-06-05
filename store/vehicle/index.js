@@ -11,6 +11,7 @@ export const state = () => ({
   vehicleTypes: [],
   selectedVehicleType: defaultVehicleType,
   theme: lightTheme,
+  showModal: false,
 })
 
 export const getters = {
@@ -37,6 +38,9 @@ export const mutations = {
       state.theme === lightTheme
         ? (state.theme = darkTheme)
         : (state.theme = lightTheme)
+  },
+  setShowModal(state, value) {
+    state.showModal = value
   },
 }
 

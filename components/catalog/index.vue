@@ -18,7 +18,7 @@
 
       <div class="addNew">
         <span class="addNew__text">Add new</span>
-        <div class="addNew__btn">
+        <div class="addNew__btn" @click="openModal">
           <img src="~/assets/images/svg/cross.svg" alt="cross" />
         </div>
       </div>
@@ -67,6 +67,7 @@ export default Vue.extend({
       vehicleTypes: (state) => state.vehicleTypes,
       selectedVehicleType: (state) => state.selectedVehicleType,
       theme: (state) => state.theme,
+      showModal: (state) => state.showModal,
     }),
     filteredVehicles() {
       return this.selected === defaultVehicleType
@@ -83,6 +84,13 @@ export default Vue.extend({
   methods: {
     setSelectedVehicleType() {
       this.$store.commit('vehicle/setSelectedVehicleType', this.selected)
+    },
+    openModal() {
+      this.$store.commit('vehicle/setShowModal', true)
+      const mainWrapper = document.querySelector('.main')
+
+      mainWrapper.classList.toggle('blurred', true)
+      document.body.style.overflow = 'hidden'
     },
   },
 })
