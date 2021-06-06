@@ -1,15 +1,19 @@
 <template>
   <div class="terms">
-    <span class="descriptionPartOne text" :class="theme">{{ termText }}</span>
-    <span class="descriptionPartTwo text" :class="theme">
+    <span class="descriptionPartOne text" :class="theme.text">
+      {{ termText }}
+    </span>
+    <span class="descriptionPartTwo text" :class="theme.text">
       Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
       Velit officia consequat duis enim velit mollit. Exercitation veniam
       consequat sunt nostrud amet.
     </span>
 
-    <h3 class="additionalConditions" :class="theme">Additional conditions:</h3>
+    <h3 class="additionalConditions" :class="theme.title">
+      Additional conditions:
+    </h3>
 
-    <ul class="conditions text" :class="theme">
+    <ul class="conditions text" :class="theme.text">
       <li>
         Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
         sint. Velit officia consequat duis enim velit mollit. Exercitation
@@ -62,14 +66,6 @@ export default {
   font-family: var(--f-reg);
   font-size: 14px;
   line-height: 20px;
-
-  &.dark {
-    color: var(--c-gull-gray);
-  }
-
-  &.light {
-    color: var(--c-slate-gray);
-  }
 }
 
 .descriptionPartTwo {
@@ -78,14 +74,6 @@ export default {
 
 .additionalConditions {
   margin-top: 22px;
-
-  &.dark {
-    color: var(--c-alabaster);
-  }
-
-  &.light {
-    color: var(--c-midnight);
-  }
 }
 
 ul {

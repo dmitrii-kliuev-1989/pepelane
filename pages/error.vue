@@ -1,7 +1,7 @@
 <template>
-  <div class="error" :class="theme">
-    <div class="error__msgOne" :class="theme">An error has occurred</div>
-    <div class="error__msgTwo" :class="theme">Please refresh the page</div>
+  <div class="error" :class="theme.block2">
+    <div class="error__msgOne" :class="theme.title">An error has occurred</div>
+    <div class="error__msgTwo" :class="theme.text">Please refresh the page</div>
     <button class="error__button">Reload page</button>
   </div>
 </template>
@@ -29,39 +29,15 @@ export default {
   justify-content: center;
   flex: 1;
 
-  &.dark {
-    background-color: var(--c-midnight-2);
-  }
-
-  &.light {
-    background-color: var(--c-athens-gray);
-  }
-
   &__msgOne {
     font-family: var(--f-bold);
     font-size: 40px;
-
-    &.dark {
-      color: var(--c-alabaster);
-    }
-
-    &.light {
-      color: var(--c-midnight);
-    }
   }
 
   &__msgTwo {
     margin-top: 24px;
     font-family: var(--f-reg);
     font-size: 14px;
-
-    &.dark {
-      color: var(--c-gull-gray);
-    }
-
-    &.light {
-      color: var(--c-slate-gray);
-    }
   }
 
   &__button {

@@ -1,10 +1,6 @@
 import { getVehicles } from 'assets/api/api/request'
-import {
-  ACTION_TYPES,
-  darkTheme,
-  defaultVehicleType,
-  lightTheme,
-} from '~/constants'
+import { ACTION_TYPES, defaultVehicleType } from '~/constants'
+import { darkTheme, lightTheme } from '~/constants/theme'
 
 export const state = () => ({
   vehicles: [],

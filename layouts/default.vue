@@ -1,5 +1,5 @@
 <template>
-  <div class="mainWrapper" :class="theme">
+  <div class="mainWrapper" :class="theme.block">
     <div class="main">
       <Header />
       <Nuxt />
@@ -46,14 +46,6 @@ html {
 
 .blurred {
   filter: blur(32px);
-}
-
-.mainWrapper.light {
-  background-color: var(--c-alabaster);
-}
-
-.mainWrapper.dark {
-  background-color: var(--c-midnight);
 }
 
 .main {

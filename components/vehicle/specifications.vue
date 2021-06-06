@@ -1,10 +1,10 @@
 <template>
   <div class="spec">
-    <span class="spec__text" :class="theme">{{ specificationsText }}</span>
-    <h2 class="spec__featuresTitle" :class="theme">Features:</h2>
+    <span class="spec__text" :class="theme.text">{{ specificationsText }}</span>
+    <h2 class="spec__featuresTitle" :class="theme.title">Features:</h2>
     <div class="features">
       <div class="feature">
-        <div class="feature__imageWrapper" :class="theme">
+        <div class="feature__imageWrapper" :class="theme.block2">
           <img
             class="feature__image"
             src="~/assets/images/svg/cup.svg"
@@ -12,17 +12,17 @@
           />
         </div>
         <div class="feature__info">
-          <h3 class="feature__title" :class="theme">
+          <h3 class="feature__title" :class="theme.title">
             A challenge for a true champion
           </h3>
-          <span class="feature__text" :class="theme">
+          <span class="feature__text" :class="theme.text">
             Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
             amet sint. Velit officia consequat duis enim velit mollit.
           </span>
         </div>
       </div>
       <div class="feature">
-        <div class="feature__imageWrapper" :class="theme">
+        <div class="feature__imageWrapper" :class="theme.block2">
           <img
             class="feature__image"
             src="~/assets/images/svg/face.svg"
@@ -30,8 +30,10 @@
           />
         </div>
         <div class="feature__info">
-          <h3 class="feature__title" :class="theme">Pilot's sweaty hands</h3>
-          <span class="feature__text" :class="theme">
+          <h3 class="feature__title" :class="theme.title">
+            Pilot's sweaty hands
+          </h3>
+          <span class="feature__text" :class="theme.text">
             Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
             amet sint. Velit officia consequat duis enim velit mollit.
           </span>
@@ -73,28 +75,12 @@ export default {
     font-family: var(--f-reg);
     font-size: 14px;
     line-height: 20px;
-
-    &.dark {
-      color: var(--c-gull-gray);
-    }
-
-    &.light {
-      color: var(--c-slate-gray);
-    }
   }
 
   &__featuresTitle {
     margin-top: 27px;
     font-family: var(--f-bold);
     font-size: 24px;
-
-    &.dark {
-      color: var(--c-alabaster);
-    }
-
-    &.light {
-      color: var(--c-midnight);
-    }
   }
 }
 
@@ -115,14 +101,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    &.dark {
-      background-color: var(--c-midnight-2);
-    }
-
-    &.light {
-      background-color: var(--c-athens-gray);
-    }
   }
 
   &__info {
@@ -135,14 +113,6 @@ export default {
     margin-top: 14px;
     font-family: var(--f-bold);
     font-size: 16px;
-
-    &.dark {
-      color: var(--c-alabaster);
-    }
-
-    &.light {
-      color: var(--c-midnight);
-    }
   }
 
   &__text {
@@ -150,14 +120,6 @@ export default {
     font-family: var(--f-reg);
     line-height: 20px;
     font-size: 14px;
-
-    &.dark {
-      color: var(--c-gull-gray);
-    }
-
-    &.light {
-      color: var(--c-slate-gray);
-    }
   }
 }
 

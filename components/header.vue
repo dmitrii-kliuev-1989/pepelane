@@ -6,12 +6,12 @@
         <img class="pepelane__img" :src="pepelaneImgPath" alt="Pepelane" />
       </div>
     </NuxtLink>
-    <div class="sharing" :class="theme">
+    <div class="sharing" :class="theme.text">
       World's first affordable airsharing
     </div>
     <div class="mod" @click="toggleTheme">
       <img class="mod__image" :src="modeImagePath" alt="mod" />
-      <span class="mod__text" :class="theme">{{ modText }}</span>
+      <span class="mod__text" :class="theme.text">{{ modText }}</span>
     </div>
     <img
       class="messagesImage"
@@ -20,7 +20,7 @@
     />
     <img class="bellImage" src="~/assets/images/svg/bell.svg" alt="bell" />
     <div class="person">
-      <div class="person__name" :class="theme">Bessie Cooper</div>
+      <div class="person__name" :class="theme.title">Bessie Cooper</div>
       <img
         class="person__image"
         src="~/assets/images/png/person.png"
@@ -33,7 +33,7 @@
 <script>
 import Vue from 'vue'
 import { mapState } from 'vuex'
-import { lightTheme } from '~/constants'
+import { lightTheme } from '~/constants/theme'
 
 export default Vue.extend({
   name: 'Header',
@@ -42,22 +42,22 @@ export default Vue.extend({
       theme: (state) => state.theme,
     }),
     logoPath() {
-      return this.theme === lightTheme
+      return this.theme.name === lightTheme.name
         ? require('~/assets/images/svg/Logo-light-theme.svg')
         : require('~/assets/images/svg/Logo-dark-theme.svg')
     },
     pepelaneImgPath() {
-      return this.theme === lightTheme
+      return this.theme.name === lightTheme.name
         ? require('../assets/images/svg/Pepelane-light-theme.svg')
         : require('../assets/images/svg/Pepelane-dark-theme.svg')
     },
     modeImagePath() {
-      return this.theme === lightTheme
+      return this.theme.name === lightTheme.name
         ? require('../assets/images/svg/night-mod.svg')
         : require('../assets/images/svg/day-mode.svg')
     },
     modText() {
-      return this.theme === lightTheme ? 'Night mod' : 'Day mod'
+      return this.theme.name === lightTheme.name ? 'Night mod' : 'Day mod'
     },
   },
   methods: {
@@ -88,19 +88,12 @@ export default Vue.extend({
   font-family: var(--f-reg);
   margin: auto 0 auto 65px;
   white-space: nowrap;
-
-  &.dark {
-    color: var(--c-gull-gray);
-  }
-
-  &.light {
-    color: var(--c-slate-gray);
-  }
 }
 
 .mod {
   margin: auto 0 auto auto;
   display: flex;
+  align-items: center;
   width: 121px;
   user-select: none;
   cursor: pointer;
@@ -114,14 +107,6 @@ export default Vue.extend({
     margin: 0 0 0 16px;
     font-family: var(--f-reg);
     white-space: nowrap;
-
-    &.dark {
-      color: var(--c-gull-gray);
-    }
-
-    &.light {
-      color: var(--c-slate-gray);
-    }
   }
 }
 
@@ -165,14 +150,6 @@ export default Vue.extend({
     align-self: center;
     white-space: nowrap;
     font-family: var(--f-bold);
-
-    &.dark {
-      color: var(--c-alabaster);
-    }
-
-    &.light {
-      color: var(--c-midnight);
-    }
   }
 
   &__image {
@@ -188,8 +165,12 @@ export default Vue.extend({
 }
 
 @media (max-width: 920px) {
-  .mod__text {
-    display: none;
+  .mod {
+    width: auto;
+
+    &__text {
+      display: none;
+    }
   }
 
   .messagesImage,

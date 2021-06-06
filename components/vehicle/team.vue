@@ -1,7 +1,7 @@
 <template>
   <div class="team">
-    <span class="team__description" :class="theme">{{ teamText }}</span>
-    <h2 class="team__title" :class="theme">Qualified specialists</h2>
+    <span class="team__description" :class="theme.text">{{ teamText }}</span>
+    <h2 class="team__title" :class="theme.title">Qualified specialists</h2>
     <div class="specialists">
       <div class="specialist">
         <img
@@ -10,8 +10,12 @@
           alt="pilot-assistant"
         />
         <div class="specialist__info">
-          <span class="specialist__name" :class="theme">Marvin McKinney</span>
-          <span class="specialist__role" :class="theme">Pilot assistant</span>
+          <span class="specialist__name" :class="theme.title">
+            Marvin McKinney
+          </span>
+          <span class="specialist__role" :class="theme.text">
+            Pilot assistant
+          </span>
         </div>
       </div>
       <div class="specialist">
@@ -21,8 +25,10 @@
           alt="mechanic"
         />
         <div class="specialist__info">
-          <span class="specialist__name" :class="theme">Savannah Nguyen</span>
-          <span class="specialist__role" :class="theme">Mechanic</span>
+          <span class="specialist__name" :class="theme.title">
+            Savannah Nguyen
+          </span>
+          <span class="specialist__role" :class="theme.text">Mechanic</span>
         </div>
       </div>
       <div class="specialist">
@@ -32,12 +38,14 @@
           alt="stewardess"
         />
         <div class="specialist__info">
-          <span class="specialist__name" :class="theme">Courtney Henry</span>
-          <span class="specialist__role" :class="theme">Stewardess</span>
+          <span class="specialist__name" :class="theme.title">
+            Courtney Henry
+          </span>
+          <span class="specialist__role" :class="theme.text">Stewardess</span>
         </div>
       </div>
     </div>
-    <span class="specialists__description" :class="theme">
+    <span class="specialists__description" :class="theme.text">
       Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint.
       Velit officia consequat duis enim velit mollit. Exercitation veniam
       consequat sunt nostrud amet.
@@ -80,14 +88,6 @@ export default {
     color: var(--c-slate-gray);
     font-size: 14px;
     line-height: 20px;
-
-    &.dark {
-      color: var(--c-gull-gray);
-    }
-
-    &.light {
-      color: var(--c-slate-gray);
-    }
   }
 
   &__title {
@@ -107,14 +107,6 @@ export default {
     color: var(--c-slate-gray);
     font-size: 14px;
     line-height: 20px;
-
-    &.dark {
-      color: var(--c-gull-gray);
-    }
-
-    &.light {
-      color: var(--c-slate-gray);
-    }
   }
 }
 
@@ -137,14 +129,6 @@ export default {
     font-family: var(--f-bold);
 
     font-size: 16px;
-
-    &.dark {
-      color: var(--c-alabaster);
-    }
-
-    &.light {
-      color: var(--c-midnight);
-    }
   }
 
   &__role {
@@ -152,14 +136,6 @@ export default {
     color: var(--c-slate-gray);
     font-family: var(--f-reg);
     font-size: 12px;
-
-    &.dark {
-      color: var(--c-gull-gray);
-    }
-
-    &.light {
-      color: var(--c-slate-gray);
-    }
   }
 }
 

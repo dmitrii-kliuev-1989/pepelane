@@ -2,11 +2,11 @@
   <div class="vehicle">
     <img class="vehicle__image" :src="imgPath" alt="vehicle__image" />
     <div class="info">
-      <h1 class="info__title" :class="theme">{{ title }}</h1>
+      <h1 class="info__title" :class="theme.title">{{ title }}</h1>
       <div class="nav">
         <NuxtLink
           class="link"
-          :class="theme"
+          :class="theme.text"
           active-class="link_active"
           :to="`/vehicle/${$route.params.id}/specifications`"
         >
@@ -14,7 +14,7 @@
         </NuxtLink>
         <NuxtLink
           class="link"
-          :class="theme"
+          :class="theme.text"
           active-class="link_active"
           :to="`/vehicle/${$route.params.id}/team`"
         >
@@ -22,7 +22,7 @@
         </NuxtLink>
         <NuxtLink
           class="link"
-          :class="theme"
+          :class="theme.text"
           active-class="link_active"
           :to="`/vehicle/${$route.params.id}/rent-terms`"
         >
@@ -34,17 +34,17 @@
         <NuxtChild />
       </div>
 
-      <div class="rentNowWrapper" :class="theme">
-        <div class="rentNow" :class="theme">
+      <div class="rentNowWrapper" :class="theme.block">
+        <div class="rentNow" :class="theme.block2">
           <div>
-            <span class="rentNow__for" :class="theme">Rent for</span>
+            <span class="rentNow__for" :class="theme.title">Rent for</span>
             <span class="rentNow__price">{{ rent | priceFilter }} $/h</span>
           </div>
           <button class="rentNow__button">Rent now</button>
         </div>
       </div>
 
-      <div class="gradientBox" :class="theme"></div>
+      <div class="gradientBox" :class="theme.gradient"></div>
     </div>
   </div>
 </template>
@@ -103,14 +103,6 @@ export default {
     font-family: var(--f-bold);
     margin-top: 54px;
     font-size: 40px;
-
-    &.dark {
-      color: var(--c-alabaster);
-    }
-
-    &.light {
-      color: var(--c-midnight);
-    }
   }
 }
 
@@ -131,14 +123,6 @@ export default {
   cursor: pointer;
   text-decoration: none;
   user-select: none;
-
-  &.dark {
-    color: var(--c-gull-gray);
-  }
-
-  &.light {
-    color: var(--c-slate-gray);
-  }
 
   &_active {
     color: var(--c-dodger-blue) !important;
@@ -161,25 +145,9 @@ export default {
   padding: 16px 32px;
   user-select: none;
 
-  &.dark {
-    background-color: var(--c-midnight-2);
-  }
-
-  &.light {
-    background-color: var(--c-athens-gray);
-  }
-
   &__for {
     font-family: var(--f-bold);
     font-size: 20px;
-
-    &.dark {
-      color: var(--c-alabaster);
-    }
-
-    &.light {
-      color: var(--c-midnight);
-    }
   }
 
   &__price {
@@ -277,22 +245,6 @@ export default {
     position: fixed;
     bottom: 100px;
     height: 34px;
-
-    &.dark {
-      background: linear-gradient(
-        180deg,
-        rgba(1, 35, 69, 0) 0%,
-        var(--c-midnight) 100%
-      );
-    }
-
-    &.light {
-      background: linear-gradient(
-        180deg,
-        rgba(252, 252, 252, 0) 0%,
-        var(--c-alabaster) 100%
-      );
-    }
   }
 
   .rentNowWrapper {
@@ -305,14 +257,6 @@ export default {
     padding-bottom: 32px;
     border-top-right-radius: 16px;
     border-top-left-radius: 16px;
-
-    &.dark {
-      background-color: var(--c-midnight);
-    }
-
-    &.light {
-      background-color: var(--c-white);
-    }
   }
 
   .rentNow {

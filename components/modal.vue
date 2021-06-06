@@ -1,32 +1,35 @@
 <template>
-  <div class="modalBackground" :class="theme">
-    <div class="addNewVehicle">
+  <div class="modalBackground">
+    <div class="addNewVehicle" :class="theme.block">
       <div class="titleWrapper">
-        <h1 class="title">Add new vehicle</h1>
-        <button class="btnClose" @click="close">
-          <img
-            class="btnClose__image"
-            src="~assets/images/svg/cross-x.svg"
-            alt=""
-          />
+        <h1 class="title" :class="theme.title">Add new vehicle</h1>
+        <button class="btnClose" :class="theme.block2" @click="close">
+          <img class="btnClose__image" :src="crossImage" alt="" />
         </button>
       </div>
       <div class="newVehicleForm">
         <label for="fileBrowser" class="fileBrowser">
-          <div class="loadImage">
-            <div class="loadImage__iconWrapper">
+          <div class="loadImage" :class="theme.block2">
+            <div class="loadImage__iconWrapper" :class="theme.block">
               <img src="~assets/images/svg/load-image.svg" alt="" />
             </div>
           </div>
           <img class="vehicleImage hide" alt="" />
         </label>
         <input id="fileBrowser" type="file" hidden @change="onFileChange" />
-        <input v-model="name" name="name" type="text" placeholder="Name" />
+        <input
+          v-model="name"
+          name="name"
+          type="text"
+          placeholder="Name"
+          :class="[theme.block2, theme.placeholder]"
+        />
         <input
           v-model="description"
           name="description"
           type="text"
           placeholder="Description"
+          :class="[theme.block2, theme.placeholder]"
         />
         <div class="rentPriceWrapper">
           <input
@@ -34,6 +37,7 @@
             name="rentPrice"
             type="number"
             placeholder="Rent price"
+            :class="[theme.block2, theme.placeholder]"
           />
           <span class="dollar">$/h</span>
         </div>
@@ -46,6 +50,7 @@
 <script>
 import Vue from 'vue'
 import { mapState } from 'vuex'
+import { lightTheme } from '~/constants/theme'
 
 export default Vue.extend({
   name: 'Modal',
@@ -66,6 +71,11 @@ export default Vue.extend({
       theme: (state) => state.theme,
       showModal: (state) => state.showModal,
     }),
+    crossImage() {
+      return this.theme.name === lightTheme.name
+        ? require('../assets/images/svg/light-theme-cross.svg')
+        : require('../assets/images/svg/dark-theme-cross.svg')
+    },
   },
   mounted() {
     this.vehicleImageElement = document.querySelector('.vehicleImage')
@@ -160,7 +170,6 @@ export default Vue.extend({
   height: 100vh;
   max-width: 600px;
   width: 100%;
-  background-color: var(--c-alabaster);
   top: 0;
   right: 0;
   border-top-left-radius: 48px;
@@ -176,14 +185,6 @@ export default Vue.extend({
   width: 100vw;
   top: 0;
   left: 0;
-
-  &.dark {
-    background-color: var(--c-blue-charcoal);
-  }
-
-  &.light {
-    background-color: var(--c-san-juan);
-  }
 }
 
 .addNewVehicle {
@@ -193,7 +194,6 @@ export default Vue.extend({
   }
 
   & .title {
-    color: var(--c-midnight);
     font-family: var(--f-bold);
     font-size: 40px;
     margin: 0;
@@ -205,12 +205,12 @@ export default Vue.extend({
     align-items: center;
     width: 48px;
     height: 48px;
-    background-color: var(--c-athens-gray);
     border: none;
     border-radius: 16px;
+    cursor: pointer;
 
     &:hover {
-      background-color: var(--c-silver-sand);
+      border: 1px solid var(--c-silver-sand);
     }
   }
 }
@@ -225,7 +225,6 @@ export default Vue.extend({
     border: none;
     height: 56px;
     width: 100%;
-    background-color: var(--c-athens-gray);
     border-radius: 12px;
     padding-left: 24px;
 
@@ -241,7 +240,6 @@ export default Vue.extend({
 
     &::placeholder {
       font-family: var(--f-reg);
-      color: var(--c-slate-gray);
       font-size: 14px;
     }
   }
@@ -282,30 +280,30 @@ export default Vue.extend({
   margin-top: 40px;
   height: 348px;
   border-radius: 24px;
+  cursor: pointer;
 }
 
 .loadImage {
   margin-top: 40px;
   width: 100%;
   height: 348px;
-  background-color: var(--c-athens-gray);
   border-radius: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid transparent;
+
+  &:hover {
+    border: 1px solid var(--c-silver-sand);
+  }
 
   &__iconWrapper {
     width: 48px;
     height: 48px;
-    background-color: var(--c-alabaster);
     border-radius: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    &:hover {
-      background-color: var(--c-gull-gray);
-    }
   }
 }
 
@@ -313,6 +311,7 @@ export default Vue.extend({
   width: 100%;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 @media (max-width: 610px) {
