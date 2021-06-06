@@ -114,7 +114,7 @@ export default Vue.extend({
       this.$store.commit('vehicle/addNewVehicle', newVehicle)
 
       this.cleanForm()
-      this.toggleImage()
+      this.showImage(false)
       this.close()
     },
     cleanForm() {
@@ -123,10 +123,11 @@ export default Vue.extend({
       this.rentPrice = ''
 
       if (this.vehicleImageElement.src !== '') {
-        this.toggleImage()
+        this.showImage(false)
       }
 
       this.firstLoad = true
+      this.fileBrowser.value = ''
     },
     onFileChange(e) {
       const files = e.target.files || e.dataTransfer.files
@@ -142,15 +143,15 @@ export default Vue.extend({
       reader.readAsDataURL(file)
 
       if (this.firstLoad) {
-        this.toggleImage()
+        this.showImage(true)
         this.firstLoad = false
       }
 
       this.fileBrowser.value = ''
     },
-    toggleImage() {
-      this.loadImageElement.classList.toggle('hide')
-      this.vehicleImageElement.classList.toggle('hide')
+    showImage(show) {
+      this.vehicleImageElement.classList.toggle('hide', !show)
+      this.loadImageElement.classList.toggle('hide', show)
     },
     getBase64Image(img) {
       const canvas = document.createElement('canvas')
@@ -227,6 +228,7 @@ export default Vue.extend({
     width: 100%;
     border-radius: 12px;
     padding-left: 24px;
+    font-family: var(--f-reg);
 
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
