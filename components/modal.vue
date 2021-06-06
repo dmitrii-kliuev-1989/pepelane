@@ -12,12 +12,14 @@
         </button>
       </div>
       <div class="newVehicleForm">
-        <label for="fileBrowser" class="loadImage">
-          <div class="loadImage__iconWrapper">
-            <img src="~assets/images/svg/load-image.svg" alt="" />
+        <label for="fileBrowser" class="fileBrowser">
+          <div class="loadImage">
+            <div class="loadImage__iconWrapper">
+              <img src="~assets/images/svg/load-image.svg" alt="" />
+            </div>
           </div>
+          <img class="vehicleImage hide" alt="" />
         </label>
-        <img class="vehicleImage hide" alt="" />
         <input id="fileBrowser" type="file" hidden @change="onFileChange" />
         <input v-model="name" name="name" type="text" placeholder="Name" />
         <input
@@ -55,6 +57,8 @@ export default Vue.extend({
       imagePath: '',
       vehicleImageElement: {},
       loadImageElement: {},
+      fileBrowser: {},
+      firstLoad: true,
     }
   },
   computed: {
@@ -66,6 +70,7 @@ export default Vue.extend({
   mounted() {
     this.vehicleImageElement = document.querySelector('.vehicleImage')
     this.loadImageElement = document.querySelector('.loadImage')
+    this.fileBrowser = document.querySelector('#fileBrowser')
   },
   methods: {
     close() {
@@ -106,7 +111,12 @@ export default Vue.extend({
       this.name = ''
       this.description = ''
       this.rentPrice = ''
-      this.vehicleImageElement.src = ''
+
+      if (this.vehicleImageElement.src !== '') {
+        this.toggleImage()
+      }
+
+      this.firstLoad = true
     },
     onFileChange(e) {
       const files = e.target.files || e.dataTransfer.files
@@ -118,9 +128,15 @@ export default Vue.extend({
 
       reader.onload = (e) => {
         this.vehicleImageElement.src = e.target.result
-        this.toggleImage()
       }
       reader.readAsDataURL(file)
+
+      if (this.firstLoad) {
+        this.toggleImage()
+        this.firstLoad = false
+      }
+
+      this.fileBrowser.value = ''
     },
     toggleImage() {
       this.loadImageElement.classList.toggle('hide')
@@ -291,6 +307,12 @@ export default Vue.extend({
       background-color: var(--c-gull-gray);
     }
   }
+}
+
+.fileBrowser {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 610px) {
