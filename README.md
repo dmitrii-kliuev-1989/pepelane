@@ -5,7 +5,6 @@ vehicle rental
 • Vue.js,  PostCss, routing, vuex   
 • responsive and adaptive design
 
-Live demo: [link](http://pepelane.dmitrii-kliuev.net/pepelane/)  
 Design in figma: [link](https://www.figma.com/file/WJrqlFsNwwQkzXQXoEVGd1/Design-Front-end?node-id=41%3A27) 
 
 ## Build Setup
